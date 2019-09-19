@@ -1,9 +1,10 @@
 import React from 'react';
 import ContactsList from './ContactsList';
+import styles from './App.module.scss';
 
 function App() {
   return (
-    <div className='ui container'>
+    <div className={styles.app}>
       <ContactsList contacts={splashData}/>
     </div>
   );

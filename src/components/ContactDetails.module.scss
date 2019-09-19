@@ -1,0 +1,89 @@
+$cardHeight: 300px;
+$horizontalMarginBetweenCards: 3px;
+$iconSize: 50px;
+$imagesTransition: height 0.3s ease-out;
+$extraContentTransition: opacity 0.3s ease-out;
+$imagesBlockHeight: calc(0.66 * #{$cardHeight});
+
+.contact-card {
+    height: $cardHeight;
+    margin: 5px $horizontalMarginBetweenCards;
+    width: calc(25% - calc(2 * #{$horizontalMarginBetweenCards}));
+    padding: 10px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+
+    .card-block {
+        position: absolute;
+    }
+
+    .images-block {
+        height: $imagesBlockHeight;
+        position: relative;
+        padding-bottom: calc(0.5 * #{$iconSize});
+        transition: $imagesTransition;
+
+        .images-block-overflow {
+            height: 100%;
+            overflow: hidden;
+
+            .profile-image {
+                display: block;
+                height: $imagesBlockHeight;
+                object-fit: cover;
+            }
+
+            img.company-icon {
+                position: absolute;
+                bottom: 0;
+                height: $iconSize;
+                width: $iconSize;
+            }
+        }
+    }
+
+    .content-block {
+        overflow-wrap: break-word;
+        margin-top: 12px;
+
+        .main {
+            margin-bottom: 12px;
+
+            .header {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .company-name {
+                font-size: 12px;
+                color: darkgray;
+            }
+        }
+
+        .extra-content {
+            opacity: 0;
+            transition: $extraContentTransition;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+
+    &:hover {
+        .images-block {
+            height: 50%;
+            transition: $imagesTransition;
+        }
+
+        .extra-content {
+            opacity: 1;
+            transition: $extraContentTransition;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .images-block .profile-image {
+        //height: $cardHeight;
+    }
+}
